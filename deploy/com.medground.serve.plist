@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  medground shared MCP server — optional always-on launchd agent (macOS).
+
+  Runs ONE `medground serve` (streamable-HTTP on 127.0.0.1:8765) so every terminal / Warp pane /
+  agent shares a single DuckDB/KuzuDB owner. See ADR-0018.
+
+  Install (edit the 3 ABSOLUTE paths below to your checkout first):
+    cp deploy/com.medground.serve.plist ~/Library/LaunchAgents/
+    launchctl load -w ~/Library/LaunchAgents/com.medground.serve.plist
+
+  Register clients:
+    claude mcp add --transport http medground http://127.0.0.1:8765/mcp
+
+  Logs:      tail -f <checkout>/data/serve.log
+  Uninstall: launchctl unload ~/Library/LaunchAgents/com.medground.serve.plist && \
+             rm ~/Library/LaunchAgents/com.medground.serve.plist
+
+  Prefer not to run a daemon? Just run `medground serve` in a dedicated terminal/Warp pane instead.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.medground.serve</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/ABSOLUTE/PATH/TO/medground/.venv/bin/medground</string>
+    <string>serve</string>
+  </array>
+  <key>WorkingDirectory</key><string>/ABSOLUTE/PATH/TO/medground</string>
+  <key>RunAtLoad</key><true/>
+  <!-- Restart only on a real crash (non-zero exit). A clean exit 0 is the single-owner guard
+       refusing a duplicate (ADR-0018) — restarting that would loop forever. -->
+  <key>KeepAlive</key>
+  <dict><key>SuccessfulExit</key><false/></dict>
+  <key>ThrottleInterval</key><integer>30</integer>
+  <key>StandardOutPath</key><string>/ABSOLUTE/PATH/TO/medground/data/serve.log</string>
+  <key>StandardErrorPath</key><string>/ABSOLUTE/PATH/TO/medground/data/serve.log</string>
+</dict>
+</plist>

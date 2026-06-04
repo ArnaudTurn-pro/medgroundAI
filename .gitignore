@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/
+data/
+.env
+*.duckdb
+*.duckdb.wal
+.lancedb/
+.DS_Store
+dist/
+build/
+*.egg-info/
+.uv-cache/
+.mypy_cache/
+
+# Personal case dossiers — contain PHI, do not publish
+docs/cases/
+docs/sources/
+docs/decisions/
