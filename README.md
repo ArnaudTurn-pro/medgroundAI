@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo.png" alt="medground logo" width="120" height="120" />
+</p>
+
 # medground
 
 **Grounded Graph-RAG over the biomedical research literature. No claim ships without a real, retrievable source.**
