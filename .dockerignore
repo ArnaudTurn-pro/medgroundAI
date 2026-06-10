@@ -1,0 +1,15 @@
+# Keep the build context small and reproducible.
+.git
+.venv
+data
+*.duckdb
+*.duckdb.wal
+graph.kuzu
+__pycache__
+*.pyc
+.pytest_cache
+.env
+.env.*
+dist
+build
+node_modules
