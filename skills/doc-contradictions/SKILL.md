@@ -191,8 +191,8 @@ Caveat: this is a finite local corpus. Absence of contradiction here ≠ settled
 
 ## Examples
 
-**User**: *"Is there conflicting evidence on adjuvant chemotherapy for stage II colon cancer?"*
-→ `summarize_evidence` for the envelope; search "adjuvant chemo improves OS stage II colon" AND "adjuvant chemo no benefit / no survival difference stage II"; bucket; ground both camps; attribute the split to MSI status / risk stratification; render two-column controversy view.
+**User**: *"Is there conflicting evidence on adjuvant chemotherapy for early-stage (IB) non-small-cell lung cancer?"*
+→ `summarize_evidence` for the envelope; search "adjuvant chemo improves OS stage IB NSCLC" AND "adjuvant chemo no benefit / no survival difference stage IB"; bucket; ground both camps; attribute the split to tumor size / risk stratification; render two-column controversy view.
 
 **User**: *"Both sides on PD-L1 as a predictive biomarker for checkpoint inhibitors."*
 → Search "PD-L1 predicts response" AND "PD-L1 does not predict response / PD-L1-negative responders"; bucket Supports/Contradicts/Nuanced; characterize by assay/threshold/tumor-type heterogeneity; flag the nuance camp heavily.

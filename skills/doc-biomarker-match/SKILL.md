@@ -111,7 +111,7 @@ Bucket by clinical significance, and within each by descending level (A → E):
 **Disease scoping is the honesty axis.** A match curated in a *different* cancer type than the
 patient's is `off-target` — surface it, but flag it explicitly (the same discipline as
 `/doc-treatment-map`'s population-match column). Never silently apply a melanoma BRAF match to a
-colorectal patient without saying so.
+lung-cancer patient without saying so.
 
 ### Step 4 — Gate, then render
 
@@ -204,7 +204,7 @@ whole pathway. No dosing.
 
 **User**: *"Is BRAF V600E targetable, and does the disease matter?"*
 → `match_therapies(gene="BRAF", variant="V600E")` across diseases; surface the melanoma A/B matches as
-`exact` for a melanoma patient but **off-target** for a colorectal patient, with the CRC-specific
+`exact` for a melanoma patient but **off-target** for a lung-cancer patient, with the lung-specific
 matches flagged separately; strength read names the disease dependence explicitly.
 
 **User**: *"What is osimertinib resistance associated with?"*

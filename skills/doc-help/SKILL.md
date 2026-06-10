@@ -92,7 +92,7 @@ Try:
   "Map the research landscape around KRAS G12C inhibitors"
   "Is this claim supported by the literature: 'osimertinib improves OS in EGFR-mutant NSCLC'?"
   "What therapies are matched to BRAF V600E, and at what evidence level?"
-  "Find the uncommon / contrarian papers on immunotherapy in MSS colorectal cancer"
+  "Find the uncommon / contrarian papers on immunotherapy in hepatocellular carcinoma"
   "Watch the literature for new antibody-drug conjugate papers in breast cancer"
 ```
 

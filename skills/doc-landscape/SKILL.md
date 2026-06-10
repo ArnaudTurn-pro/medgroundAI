@@ -21,7 +21,7 @@ Trigger phrases (exact or paraphrased):
 - *"What's the state of the field on immune checkpoint inhibitors?"* / *"State of play on CAR-T?"*
 - *"Give me a concept map for PARP inhibitors."* / *"Lay of the land in glioblastoma."*
 - *"What connects to BRCA1?"* / *"What's adjacent to the EGFR pathway?"*
-- *"What are the research clusters around pancreatic cancer?"*
+- *"What are the research clusters around triple-negative breast cancer?"*
 - *"What are the key papers in tumor microenvironment research?"*
 
 If the user names a specific clinical QUESTION ("does X improve survival") rather than a FIELD, prefer `/doc-evidence`. If they want the *weird* edges rather than the dominant structure, prefer `/doc-gems`.
@@ -208,7 +208,7 @@ Note: graph edges are **co-occurrence** (two concepts tagged on the same paper),
 **User**: *"What connects to BRCA1?"*
 → 1-hop neighborhood around `mesh:BRCA1_Protein`; raw weighted neighbor table first; cluster (DNA repair / PARP inhibition / hereditary risk); identify the PARP-inhibitor bridge as a `/doc-synthesis` lead.
 
-**User**: *"Give me a concept map for pancreatic cancer, and tell me where the corpus is thin."*
+**User**: *"Give me a concept map for hepatocellular carcinoma, and tell me where the corpus is thin."*
 → Full landscape map plus an explicit `[GAP]` section listing weight-1 neighbors and expected-but-absent themes, with an `ingest_pubmed` offer.
 
 **User**: *"Lay of the land on KRAS — go two hops out."*

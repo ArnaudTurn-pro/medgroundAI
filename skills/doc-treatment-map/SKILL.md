@@ -33,7 +33,7 @@ stays decision-*support*, not prescription, and it holds these lines without exc
 - ⚠️ **The final decision belongs to the treating team / multidisciplinary tumor board (RCP).** The
   output is framed to *inform that discussion*, never to override it.
 - ⚠️ **A recommendation built on unconfirmed facts is PROVISIONAL** and labelled so. If the case
-  has pending decision-gating facts (MSI status, stage, resectability), the ranking is conditional
+  has pending decision-gating facts (a key biomarker status, stage, resectability), the ranking is conditional
   and the decision tree is the real deliverable until those resolve.
 
 If you cannot keep these lines for a given request, say so and fall back to `/doc-evidence`
@@ -90,7 +90,7 @@ run `/doc-case` FIRST to build one, then map. A pathway ranking with no patient 
 ### Step 1 — State interpretation + lock the scope (one line)
 
 > *"Mapping treatment pathways for <case handle>, objective = <overall recovery>. Candidate
-> pathways: A <…>, B <…>, C <…>. Decision-gating unknowns: <MSI status, stage>. Read-only."*
+> pathways: A <…>, B <…>, C <…>. Decision-gating unknowns: <biomarker status, stage>. Read-only."*
 
 If you built the block via `/doc-case` this turn, say so. Repeat the patient scope so the user sees
 it's honored. If `objective` differs from default, name it.
@@ -103,7 +103,7 @@ From the Patient Context Block:
   "neoadjuvant ICI → surgery → surveillance" / "upfront surgery → adjuvant chemo" /
   "first-line ICI (metastatic) ± chemo". Keep them mutually distinguishable.
 - **Decision-gating unknowns** = the pending facts that *flip which pathway applies*
-  (e.g. MSI/MMR status, stage III vs IV, resectability of metastases, germline status). These are
+  (e.g. a driver-mutation or receptor status, stage III vs IV, resectability of metastases, germline status). These are
   the branch points of the decision tree in Step 4.
 
 ### Step 3 — Retrieve grounded outcome evidence per pathway (parallel)
@@ -125,7 +125,7 @@ For each candidate pathway, in ONE parallel batch where possible:
 
 Pull, per pathway: **efficacy outcomes** (response, pCR, DFS, OS where reported), **comparative**
 data vs the alternative, **risks/toxicity**, and **the population caveat** (does the evidence's
-population match THIS patient — stage, MSI, line of therapy?).
+population match THIS patient — stage, biomarker status, line of therapy?).
 
 **Survival horizon is mandatory.** For each pathway, explicitly retrieve **time-anchored survival**
 — 2-year and 5-year DFS/OS/RFS where the corpus reports it (also capture any 3-year landmark and
@@ -144,11 +144,11 @@ under that combination of facts, with the grounded evidence attached. This is th
 robust even when the case is unresolved — it says *"here is what to do once you know X."*
 
 ```
-<Unknown 1: MSI/MMR status?>
- ├─ dMMR / MSI-H ──> <Unknown 2: stage?>
- │     ├─ non-metastatic (III) ─> Pathway A: neoadjuvant ICI → surgery   [grounded evidence]
- │     └─ metastatic (IV)      ─> Pathway B: first-line ICI ± chemo       [grounded evidence]
- └─ pMMR / MSS ─────────────────> Pathway C: chemo-based ± surgery        [grounded evidence]
+<Unknown 1: EGFR mutation status?>
+ ├─ EGFR-mutant ──> <Unknown 2: stage?>
+ │     ├─ resectable (I–III) ─> Pathway A: surgery → adjuvant targeted therapy   [grounded evidence]
+ │     └─ metastatic (IV)      ─> Pathway B: first-line targeted therapy       [grounded evidence]
+ └─ EGFR wild-type ─────────────> Pathway C: chemo-immunotherapy        [grounded evidence]
 ```
 
 Mark which leaf the patient is *currently* on (or "undetermined — pending <X>").
@@ -305,12 +305,12 @@ It does not invoke those automatically; the drill-down links are an offer.
 
 ## Examples
 
-**User** (after `/doc-case` on a dMMR-suspected right-colon patient): *"Sort out the treatment
+**User** (after `/doc-case` on an EGFR-status-pending metastatic lung adenocarcinoma patient): *"Sort out the treatment
 process for the best outcome."*
-→ Enumerate pathways (neoadjuvant ICI → surgery / upfront surgery → adjuvant / first-line
-metastatic ICI). Decision tree on MSI status + stage. Comparative evidence map of grounded
-outcomes per arm with population-match honesty. Ranked recommendation — PROVISIONAL pending MSI +
-staging — naming the immunotherapy-first arm #1 *if* dMMR + non-metastatic, with the surrogate-
+→ Enumerate pathways (first-line targeted therapy if EGFR-mutant / chemo-immunotherapy if wild-type /
+chemo ± ICI). Decision tree on EGFR status + PD-L1. Comparative evidence map of grounded
+outcomes per arm with population-match honesty. Ranked recommendation — PROVISIONAL pending EGFR +
+PD-L1 — naming the targeted-therapy-first arm #1 *if* EGFR-mutant, with the surrogate-
 endpoint caveat. Gate the outcome claims. Defer to the RCP. Disclaimer.
 
 **User**: *"Immunotherapy-first or surgery-first?"* (patient block present)

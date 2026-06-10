@@ -217,7 +217,7 @@ When facets **agree cleanly**, drop the `/doc-contradictions` drill-down. When t
 **User**: *"What's the evidence for PARP inhibitors in BRCA-mutated ovarian cancer?"*
 → Restate interpretation; `summarize_evidence` across all 5 facets; draft claims per facet citing only the envelope; `check_grounding` → repair → re-check to `grounded=true`; render the faceted answer + Citations + grounded_ratio + gaps. Offer `/doc-paper-appraisal` on the pivotal trial.
 
-**User**: *"Is pembrolizumab effective in MSI-high colorectal cancer, and what's the comparator picture?"*
+**User**: *"Is pembrolizumab effective in PD-L1-high non-small-cell lung cancer, and what's the comparator picture?"*
 → Same flow, emphasis on Efficacy + Comparators facets. Any head-to-head not directly tested in corpus → `[INFERENCE]` line, flagged. Route to `/doc-contradictions` if response-rate findings disagree.
 
 **User**: *"Summarize the research on tumor mutational burden as a biomarker for immunotherapy response."*

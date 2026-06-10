@@ -36,7 +36,7 @@ That's the whole loop: ask → grounded, cited answer → drill in with the `pap
 
 > What's the evidence for osimertinib in first-line EGFR-mutant NSCLC?
 
-> Is pembrolizumab effective in MSI-high colorectal cancer? Sourced, with a grounded_ratio.
+> Is pembrolizumab effective first-line in PD-L1-high non-small-cell lung cancer? Sourced, with a grounded_ratio.
 
 > `/doc-evidence` second-line options after osimertinib resistance in EGFR-mutant lung cancer
 
@@ -49,7 +49,7 @@ carrying a `paper_id`, gaps named out loud, and a citations table.
 
 > What's actionable for EGFR L858R in lung cancer? Show the evidence level for each therapy.
 
-> `/doc-biomarker-match` KRAS G12C in colorectal cancer
+> `/doc-biomarker-match` KRAS G12C in non-small-cell lung cancer
 
 > Is the ERBB2 (HER2) amplification targetable? What does CIViC say, and how strong is it?
 
@@ -91,7 +91,7 @@ confused with "it's trustworthy."
 
 > `/doc-landscape` map the research landscape around tumor mutational burden as a biomarker
 
-> `/doc-gems` find uncommon or contrarian papers on immunotherapy in MSS colorectal cancer
+> `/doc-gems` find uncommon or contrarian papers on immunotherapy in hepatocellular carcinoma
 
 **You get:** for landscape, the concept clusters and hub/bridge papers from the MeSH graph; for
 gems, the underappreciated, novel, or against-the-grain findings most summaries skip.

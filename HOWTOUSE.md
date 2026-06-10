@@ -58,7 +58,7 @@ With the MCP connected, **ask your question in plain English.** You don't need t
 names — Claude retrieves from the corpus and answers with citations. Try:
 
 - *"What's the evidence for PARP inhibitors in BRCA-mutated ovarian cancer?"*
-- *"Is pembrolizumab effective in MSI-high colorectal cancer?"*
+- *"Is pembrolizumab effective in PD-L1-high non-small-cell lung cancer?"*
 - *"What's known about osimertinib resistance in EGFR-mutant lung cancer?"*
 - *"What therapies are indicated for the BRAF V600E mutation in melanoma?"*
 - *"Map the research landscape around KRAS G12C inhibitors."*
@@ -130,13 +130,13 @@ You can just describe what you want — Claude picks the right approach. Common 
 | You want… | Say something like… |
 |---|---|
 | A sourced evidence summary | *"What's the evidence for `<drug>` in `<cancer>`?"* |
-| Research shaped around a patient | *"Here's a patient: 47 yo, MSI-high right-colon adenocarcinoma, prior FOLFOX — what should I look up?"* |
+| Research shaped around a patient | *"Here's a patient: 58 yo, metastatic lung adenocarcinoma, EGFR exon 19 deletion, progressed on osimertinib — what should I look up?"* |
 | Best-supported treatment **strategy/sequence** | *"Rank the treatment pathways for this patient by outcome."* (strategy, never dosing) |
 | Biomarker → therapy evidence | *"What therapies are indicated for EGFR T790M?"* |
 | Find a specific paper | *"Find that olaparib maintenance trial."* |
 | Judge a paper's quality | *"How good is pubmed:30345884? Risk of bias?"* |
 | Map a field | *"Map the landscape around tumor mutational burden."* |
-| Novel / contrarian papers | *"Find the hidden gems on immunotherapy in MSS colorectal cancer."* |
+| Novel / contrarian papers | *"Find the hidden gems on immunotherapy in hepatocellular carcinoma."* |
 | A combination hypothesis | *"Could a PARP inhibitor and an anti-PD-1 be combined? Grounded rationale."* |
 | Where the literature disagrees | *"Is the benefit of `<X>` settled or contested?"* |
 | Fact-check a draft you wrote | *"Is this claim supported by the literature: '…'?"* |

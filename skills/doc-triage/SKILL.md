@@ -278,10 +278,10 @@ If the user later says *"now do the same but just what's new"*, re-run with `mod
 **User**: *"Anything promising in BRCA-mutant ovarian cancer right now?"*
 → `discovery` mode. Lean on graph bridge-concepts + gems pass; promising-leads list with strength caveats; route novel single-source hits to `/doc-paper-appraisal`.
 
-**User**: *"How strong is the evidence that PARP inhibitors help in pancreatic cancer?"*
+**User**: *"How strong is the evidence that PARP inhibitors help in BRCA-mutated prostate cancer?"*
 → `appraisal` mode. Strong-vs-weak split; design/recency cues per claim; each row → `/doc-paper-appraisal` (or `/doc-contradictions` if conflicting).
 
-**User**: *"What's understudied in immunotherapy for MSI-high colorectal cancer?"*
+**User**: *"What's understudied in immunotherapy for triple-negative breast cancer?"*
 → `gaps` mode. Cross high-graph-weight adjacent concepts against low `concept_papers` volume; understudied-seams table; offer `/doc-watch` to ingest fresh PubMed.
 
 **User** (after running `/doc-case` for a 65yo EGFR L858R lung adeno patient): *"OK, what does the evidence say for this patient?"*
