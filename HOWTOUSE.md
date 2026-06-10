@@ -17,6 +17,11 @@ There are two ways in, in order of simplicity:
 
 ## 1. Connect it (one time, ~1 minute)
 
+> **Easiest path:** from the repo folder, run **`./install.sh`**. It installs medground, writes
+> your `.env` for you (no hand-editing), offers to download a starter corpus, connects it to Claude,
+> and installs the skills — then tells you what to ask first. The manual steps below do the same
+> thing by hand.
+
 medground runs as an **[MCP](https://modelcontextprotocol.io) server**, so Claude uses it as a
 tool. If you haven't installed it yet, do the [README Quickstart](README.md#quickstart) first
 (`git clone` → `uv sync` → fill in `.env`). Then register the server:
@@ -141,8 +146,8 @@ You can just describe what you want — Claude picks the right approach. Common 
 
 ## 5. Power-user mode: the `/doc` skill profile (optional)
 
-If you use **Claude Code** and install the **`doc` skill profile** (a set of Claude skills,
-distributed separately from this repo), every flow above becomes a first-class slash command with
+If you use **Claude Code**, install the bundled **`doc` skill profile** — one command from the repo
+root, **`./install-skills.sh`** — and every flow above becomes a first-class slash command with
 structured, consistent output:
 
 ```
@@ -163,7 +168,8 @@ structured, consistent output:
 
 You **don't need these.** Plain-English questions work out of the box, because the MCP server tells
 Claude to follow the grounded *retrieve → cite → check* loop automatically. The skills just make it
-smoother and more repeatable.
+smoother and more repeatable. Full list in [`skills/README.md`](skills/README.md); copy-paste prompts
+to try in [`EXAMPLES.md`](EXAMPLES.md).
 
 ---
 

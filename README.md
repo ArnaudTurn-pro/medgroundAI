@@ -15,13 +15,13 @@ Desktop, Claude Code, or any MCP-aware client as a research tool.
 > the literature *says*, grounded in citations — it does not prescribe, dose, or replace a
 > clinician or tumor board.
 
-- **New here? → [`HOWTOUSE.md`](HOWTOUSE.md)** — a 5-minute guide to asking Claude grounded questions (no tool names required).
+- **New here? → [`HOWTOUSE.md`](HOWTOUSE.md)** — a 5-minute guide to asking Claude grounded questions (no tool names required). One-command setup: **[`./install.sh`](install.sh)** · copy-paste prompts: **[`EXAMPLES.md`](EXAMPLES.md)**.
 - **Status:** early development (`0.0.x`) · Python 3.11+ · 24 tests green · [MIT](LICENSE)-licensed
 - **Scale** (snapshot, 2026-06-01 — grows continuously, run `medground stats` for live counts):
   ~12,400 grounded documents (~26,900 chunks), of which 11,240 are CIViC biomarker→therapy items;
   two retrieval-ready sources (PubMed + CIViC)
 - **Scope:** the retrieval pipeline is domain-agnostic; the reference corpus today is **oncology** (PubMed + CIViC). The repo ships the *pipeline*, not the corpus — you build your own with `medground ingest`, so no third-party article text is redistributed.
-- **Architecture deep-dive:** [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and the
+- **Architecture deep-dive:** [`docs/decisions/ARCHITECTURE.md`](docs/decisions/ARCHITECTURE.md) and the
   [ADRs](docs/decisions/) (18 decision records)
 
 ---
@@ -105,12 +105,22 @@ See [ADR-0007](docs/decisions/0007-groundedness-and-provenance.md) and
 
 ## Quickstart
 
+> **In a hurry?** One command does everything below — installs medground, writes your `.env` (no
+> hand-editing), offers a starter corpus, connects it to Claude, and installs the `/doc` skills:
+>
+> ```bash
+> git clone https://github.com/ArnaudTurn-pro/medgroundAI medground && cd medground
+> ./install.sh
+> ```
+>
+> It's safe to re-run anytime to change a setting. The manual steps below are the same thing, broken out.
+
 ### 1. Install
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11+.
 
 ```bash
-git clone <repo-url> medground && cd medground
+git clone https://github.com/ArnaudTurn-pro/medgroundAI medground && cd medground
 uv sync                      # creates .venv and installs from uv.lock
 ```
 
@@ -196,6 +206,23 @@ connect.
 >
 > One writer, many clients — no lock conflict; a startup lock makes a stray second server exit
 > cleanly. See [ADR-0018](docs/decisions/0018-http-transport-and-single-owner-lock.md).
+
+---
+
+## Skills — the `/doc` profile (optional, recommended)
+
+medground bundles a set of **[Claude Code](https://docs.claude.com/en/docs/claude-code) skills** in
+[`skills/`](skills/) that turn the grounded workflow into slash commands — `/doc-evidence`,
+`/doc-case`, `/doc-treatment-map`, `/doc-biomarker-match`, and more. They're optional (plain-English
+questions already work), but they make the flows first-class and consistent. Install them with one
+command from the repo root:
+
+```bash
+./install-skills.sh          # copies them into ~/.claude/skills
+```
+
+Restart Claude Code and type `/doc`. Full list in [`skills/README.md`](skills/README.md); copy-paste
+prompts in [`EXAMPLES.md`](EXAMPLES.md). (`./install.sh` installs these for you at the end.)
 
 ---
 
@@ -435,6 +462,9 @@ Project layout:
 | `src/medground/mcp/server.py` | MCP server (17 tools) |
 | `src/medground/cli.py` | The `medground` CLI |
 | `docs/decisions/` | 18 Architecture Decision Records (Nygard format) |
+| `skills/` + `install-skills.sh` | The `/doc` Claude Code skills + their installer |
+| `install.sh` | Guided one-command setup (uv sync → `.env` → corpus → MCP → skills) |
+| `HOWTOUSE.md` · `EXAMPLES.md` | Plain-English usage guide + copy-paste prompts |
 
 ---
 
@@ -449,7 +479,7 @@ extraction beyond MeSH (scispaCy / LLM relation extraction) · an evaluation har
 questions + grounding/retrieval metrics).
 
 Rationale for every major choice is recorded as an [ADR](docs/decisions/); the running narrative is
-in [`docs/BUILD_LOG.md`](docs/BUILD_LOG.md).
+in [`docs/decisions/BUILD_LOG.md`](docs/decisions/BUILD_LOG.md).
 
 ---
 
